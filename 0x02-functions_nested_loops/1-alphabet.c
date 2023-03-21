@@ -2,11 +2,9 @@
 
 
 /**
- * print_alphabet - print alphabets
+ * print_alphabet - print the alphabet in lowercase
  *
- * Description: C program that prints the last digit of a number
- *
- * Return: Always 0 (Success)
+ * Return: void(Success)
  */
 
 void print_alphabet(void)
