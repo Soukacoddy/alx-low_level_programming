@@ -2,7 +2,7 @@
 
 
 /**
- * main - Entry point
+ * print_alphabet - print alphabets
  *
  * Description: C program that prints the last digit of a number
  *
