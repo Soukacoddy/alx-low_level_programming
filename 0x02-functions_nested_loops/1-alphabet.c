@@ -2,8 +2,11 @@
 
 
 /**
- * print-alphabet - Make the alphabet
- * Return: void
+ * main - Entrypoint
+ *
+ * Description: C program that prints the last digit of a number
+ *
+ * Return: Always 0 (Success)
  */
 
 void print_alphabet(void)
