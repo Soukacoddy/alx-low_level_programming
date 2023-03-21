@@ -2,7 +2,7 @@
 
 
 /**
- * main - Entrypoint
+ * main - Entry point
  *
  * Description: C program that prints the last digit of a number
  *
