@@ -1,18 +1,30 @@
+#ifndef _DOG_H
+#define _DOG_H
 #include <stdio.h>
-#include "dog.h"
+#include <stdlib.h>
+
+typedef struct dog dog;
 
 /**
- * main - check the code
+ * struct dog - check the code
+ * @name: pram
+ * @age: pram
+ * @owner: pram
  *
- * Return: Always 0.
+ * Description: dog struct
  */
-int main(void)
-{
-    struct dog my_dog;
 
-    my_dog.name = "Poppy";
-    my_dog.age = 3.5;
-    my_dog.owner = "Bob";
-    printf("My name is %s, and I am %.1f :) - Woof!\n", my_dog.name, my_dog.age);
-    return (0);
-}
+struct dog
+{
+	char *name;
+	float age;
+	char *owner;
+};
+typedef struct dog dog_t;
+
+void init_dog(struct dog *d, char *name, float age, char *owner);
+void init_dog(struct dog *d);
+dog_t *new_dog(char *name, float age, char *owner);
+void free_dog(dog_t *d);
+
+#endif
