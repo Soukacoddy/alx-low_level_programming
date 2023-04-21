@@ -1,33 +1,39 @@
 #include "variadic_functions.h"
+#include <stdio.h>
+#include <stdarg.h>
 
 /**
- * print_strings - prints strings, followed by a new line
- * @separator: the string to be printed between the strings
- * @n: the number of strings passed to the function
- * Return: void
+ * print_string - prints strings
+ * Owned By MoOka
+ * @separator: String to be printed between strings
+ * @n: number of strings passed
+ * @...: A variable number
+ * Return: 0.
  */
+
 void print_strings(const char *separator, const unsigned int n, ...)
 {
-va_list args;
-unsigned int i;
-char *str;
+	char *s;
+	unsigned int i;
+	va_list op;
 
-va_start(args, n);
+	va_start(op, n);
+	if (separator == NULL)
+		separator = "";
+	for (i = 0; i < n; i++)
+	{
 
-for (i = 0; i < n; i++)
-{
-str = va_arg(args, char *);
-
-if (str == NULL)
-printf("(nil)");
-else
-printf("%s", str);
-
-if (i < n - 1 && separator != NULL)
-printf("%s", separator);
-}
-
-va_end(args);
-
-printf("\n");
+		s = va_arg(op, char*);
+		if (s == NULL)
+		{
+			s = "(nil)";
+		}
+		printf("%s", s);
+		if (i < n - 1)
+		{
+			printf("%s", separator);
+		}
+	}
+	printf("\n");
+	va_end(op);
 }
