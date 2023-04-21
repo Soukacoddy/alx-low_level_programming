@@ -1,44 +1,50 @@
 #include "variadic_functions.h"
-#include "printc.c"
-#include "printi.c"
-#include "print_f.c"
-#include "prints.c"
+#include <stdarg.h>
+#include <stdio.h>
 
 /**
- * print_all - print everything
- * @format: type to print
- * Return: none
+ * print_all - A function with 2 parameters
+ * Owned By SOUka
+ * @format: specifies the necessary operation
+ * Return: void
  */
 
 void print_all(const char * const format, ...)
 {
-	int i, j;
-	char *separator = "";
-	va_list vprint;
+	int i = 0;
+	char *st, *s = "";
+	va_list list;
 
-	types opt[] = { {'c', printc},
-			      {'i', printi},
-			      {'f', print_f},
-			      {'s', prints},
-			      {'\0', NULL} };
-
-	va_start(vprint, format);
-	i = 0;
-	while (format != NULL && format[i] != '\0')
+	va_start(list, format);
+	if (format)
 	{
-		j = 0;
-		while (opt[j].c != '\0')
+		while (format[i])
 		{
-			if (opt[j].c == format[i])
+			switch (format[i])
 			{
-				printf("%s", separator);
-				opt[j].f(vprint);
-				separator = ", ";
+				case 'c':
+					printf("%s%c", s, va_arg(list, int));
+					break;
+				case 'i':
+					printf("%s%d", s, va_arg(list, int));
+					break;
+				case 'f':
+					printf("%s%f", s, va_arg(list, double));
+					break;
+				case 's':
+					st = va_arg(list, char *);
+					if (!st)
+						st = "(nil)";
+					printf("%s%s", s, st);
+					break;
+				default:
+					i++;
+					continue;
 			}
-			j++;
+			s = ", ";
+			i++;
 		}
-		i++;
 	}
-	va_end(vprint);
 	printf("\n");
+	va_end(list);
 }
