@@ -31,4 +31,3 @@ va_end(args);
 
 printf("\n");
 }
-Footer
